@@ -13,7 +13,7 @@ Mini-projet AWD 2026-2027 (architecture microservices, Spring Cloud).
 | (à compléter) | MS4 – geo-service |
 | (à compléter) | MS5 – case-service |
 | (à compléter) | MS6 – notification-service |
-| Tout le groupe | MS7 – analytics-service (microservice commun) |
+| Tout le groupe | MS7 – analytics-service (microservice commun, Python / FastAPI) |
 
 Classe / groupe : (à compléter)
 Outil de gestion de projet : (lien vers le tableau GitHub Projects / Trello / Jira)
@@ -26,21 +26,21 @@ Acteurs : citoyen (`CITIZEN`), agent municipal (`MUNICIPAL_AGENT`), administrate
 
 ## Microservices
 
-| Service | Responsabilité | Base |
-| --- | --- | --- |
-| user-service | Profils, commune de rattachement, points de réputation | H2 |
-| report-service | Cycle de vie d'un signalement | MySQL |
-| media-service | Photos liées aux signalements | H2 |
-| geo-service | Communes, zones, rattachement d'une position GPS | H2 |
-| case-service | Dossiers municipaux, agents, statuts, commentaires | MySQL |
-| notification-service | Notifications et historique | H2 |
-| analytics-service | Statistiques et zones à risque | MongoDB |
+| Service | Responsabilité | Technologie | Base |
+| --- | --- | --- | --- |
+| user-service | Profils, commune de rattachement, points de réputation | Spring Boot | H2 |
+| report-service | Cycle de vie d'un signalement | Spring Boot | MySQL |
+| media-service | Photos liées aux signalements | Spring Boot | H2 |
+| geo-service | Communes, zones, rattachement d'une position GPS | Spring Boot | H2 |
+| case-service | Dossiers municipaux, agents, statuts, commentaires | Spring Boot | MySQL |
+| notification-service | Notifications et historique | Spring Boot | H2 |
+| analytics-service | Statistiques et zones à risque | Python / FastAPI | MongoDB |
 
 Une base par microservice, aucune base partagée.
 
 ## Architecture
 
-Front-end → API Gateway (Spring Cloud Gateway) → microservices Spring Boot.
+Front-end → API Gateway (Spring Cloud Gateway) → microservices (Spring Boot, et Python pour analytics-service).
 Infrastructure : Eureka (découverte), Config Server, Keycloak (authentification et rôles), broker de messages pour les événements asynchrones, Docker Compose.
 
 Diagramme : `Documentation/Diagrams/architecture-globale.png` (à exporter depuis le dossier technique).
