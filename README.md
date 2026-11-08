@@ -77,16 +77,24 @@ ecosignal-SSA1/
 
 ## Lancement
 
-À compléter au fil des séances (S5 à S9) :
+Cette section sera complétée au fil des séances (Gateway et Eureka en S5, Docker Compose en S9).
+
+État actuel (Validation 1) : les projets de chaque microservice sont créés dans `Backend/microservices/` et démarrent individuellement. Pour lancer un service Spring Boot :
+
+```
+cd Backend/microservices/<nom-du-service>
+./mvnw spring-boot:run
+```
+
+Prévu pour la version finale :
 
 ```
 docker compose up --build
 ```
 
-- Gateway : http://localhost:8080 (à confirmer)
-- Eureka : http://localhost:8761 (à confirmer)
-- Keycloak : à compléter
-- Swagger de chaque service : `/swagger-ui.html` (à confirmer)
+- API Gateway : port 8080
+- Eureka : port 8761
+- Keycloak et Swagger de chaque service : à documenter
 
 ## Documentation
 
