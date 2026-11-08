@@ -16,7 +16,7 @@ Mini-projet AWD 2026-2027 (architecture microservices, Spring Cloud).
 | Tout le groupe | MS7 – analytics-service (microservice commun, Python / FastAPI) |
 
 Classe / groupe : (à compléter)
-Outil de gestion de projet : (lien vers le tableau GitHub Projects / Trello / Jira)
+Outil de gestion de projet : [GitHub Projects](https://github.com/users/aymenRaddedi/projects/8)
 
 ## Sujet
 
@@ -41,26 +41,33 @@ Une base par microservice, aucune base partagée.
 ## Architecture
 
 Front-end → API Gateway (Spring Cloud Gateway) → microservices (Spring Boot, et Python pour analytics-service).
-Infrastructure : Eureka (découverte), Config Server, Keycloak (authentification et rôles), broker de messages pour les événements asynchrones, Docker Compose.
-
-Diagramme : `Documentation/Diagrams/architecture-globale.png` (à exporter depuis le dossier technique).
+Infrastructure : Eureka (découverte), Config Server, Keycloak (authentification et rôles), broker de messages pour les événements asynchrones (Kafka, à confirmer), Docker Compose.
 
 Communication :
 - synchrone (OpenFeign) : report → geo, media → report, notification → user, case → geo ;
 - asynchrone : `report.created`, `case.status-changed`, `media.added`.
 
+Diagrammes (dossier `Documentation/Diagrams/`) :
+- `architecture-globale.png` : architecture globale ;
+- `diagramme-classes-par-domaine (1).png` : classes par domaine (un domaine = un microservice) ;
+- `sequence-signalement.png` : parcours d'un signalement, avec le cas de panne ;
+- `classes-<service>.png` : diagramme de classes de chaque microservice.
+
 ## Structure du dépôt
 
 ```
-ecosignal-<classe>-<groupe>/
+ecosignal-SSA1/
 ├── Backend/
-│   ├── user-service/
-│   ├── report-service/
-│   ├── media-service/
-│   ├── geo-service/
-│   ├── case-service/
-│   ├── notification-service/
-│   └── analytics-service/
+│   ├── eureka/
+│   ├── gateway/
+│   └── microservices/
+│       ├── user-service/
+│       ├── report-service/
+│       ├── media-service/
+│       ├── geo-service/
+│       ├── case-service/
+│       ├── notification-service/
+│       └── analytics-service/
 ├── Frontend/
 ├── Documentation/
 │   ├── Presentation/
@@ -83,7 +90,7 @@ docker compose up --build
 
 ## Documentation
 
-Le dossier technique (sujet, acteurs, découpage, données, interactions, architecture, contrats d'API, planning) est dans `Documentation/`.
+Le dossier technique (sujet, acteurs, découpage, données, interactions, architecture, contrats d'API, planning) et la présentation sont dans `Documentation/`.
 
 ## Organisation Git
 
