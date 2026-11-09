@@ -7,12 +7,12 @@ Mini-projet AWD 2026-2027 (architecture microservices, Spring Cloud).
 
 | Nom et prénom | Microservice |
 | --- | --- |
-| (à compléter) | MS1 – user-service |
+| Aymen Raddedi | MS1 – user-service |
 | (à compléter) | MS2 – report-service |
 | (à compléter) | MS3 – media-service |
 | (à compléter) | MS4 – geo-service |
 | (à compléter) | MS5 – case-service |
-| (à compléter) | MS6 – notification-service |
+| Mohamed islem Mnakbi | MS6 – notification-service |
 | Tout le groupe | MS7 – analytics-service (microservice commun, Python / FastAPI) |
 
 Classe / groupe : (à compléter)
