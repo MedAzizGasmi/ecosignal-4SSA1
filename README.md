@@ -15,7 +15,7 @@ Mini-projet AWD 2026-2027 (architecture microservices, Spring Cloud).
 | Mohamed islem Mnakbi | MS6 – notification-service |
 | Tout le groupe | MS7 – analytics-service (microservice commun, Python / FastAPI) |
 
-Classe / groupe : (à compléter)
+Classe / groupe : 4SSA1-G6
 Outil de gestion de projet : [GitHub Projects](https://github.com/users/aymenRaddedi/projects/8)
 
 ## Sujet
