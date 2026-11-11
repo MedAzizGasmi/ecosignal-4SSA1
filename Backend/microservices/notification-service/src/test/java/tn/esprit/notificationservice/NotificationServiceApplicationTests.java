@@ -1,10 +1,10 @@
-package tn.esprit.hello;
+package tn.esprit.notificationservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HelloApplicationTests {
+class NotificationServiceApplicationTests {
 
     @Test
     void contextLoads() {
