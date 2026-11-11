@@ -13,38 +13,14 @@
       <div>
         <p class="eyebrow">ECOSIGNAL · AWD</p>
         <h1>Test des microservices</h1>
-        <p class="subtitle">Vérifier les deux API Hello.</p>
+        <p class="subtitle">Vérifier l'endpoint Hello de chaque microservice.</p>
       </div>
     </header>
 
-    <section class="services" aria-label="Réponses des microservices">
-      <article class="service-card">
-        <div class="card-top">
-          <span class="service-icon user">U</span>
-          <div>
-            <h2>user-service</h2>
-            <code>GET http://localhost:8081/hello</code>
-          </div>
-        </div>
-        <p class="response" id="userResponse">En attente de la réponse…</p>
-        <span class="status" id="userStatus">Non testé</span>
-      </article>
+    <section class="services" id="services" aria-label="Réponses des microservices"></section>
 
-      <article class="service-card">
-        <div class="card-top">
-          <span class="service-icon report">R</span>
-          <div>
-            <h2>report-service</h2>
-            <code>GET http://localhost:8082/hello</code>
-          </div>
-        </div>
-        <p class="response" id="reportResponse">En attente de la réponse…</p>
-        <span class="status" id="reportStatus">Non testé</span>
-      </article>
-    </section>
-
-    <button id="testButton" type="button">Tester les deux API</button>
-    <p class="hint">Démarrez d'abord user-service (8081) et report-service (8082).</p>
+    <button id="testButton" type="button">Tester les microservices</button>
+    <p class="hint">Démarrez d'abord les microservices (ports 8081 à 8087, voir le README).</p>
   </main>
   <script src="app.js"></script>
 </body>
