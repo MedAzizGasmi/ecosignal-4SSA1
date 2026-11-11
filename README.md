@@ -47,16 +47,18 @@ Communication :
 - synchrone (OpenFeign) : report → geo, media → report, notification → user, case → geo ;
 - asynchrone : `report.created`, `case.status-changed`, `media.added`.
 
+![Architecture globale](Documentation/Diagrams/architecture-globale.png)
+
 Diagrammes (dossier `Documentation/Diagrams/`) :
 - `architecture-globale.png` : architecture globale ;
-- `diagramme-classes-par-domaine (1).png` : classes par domaine (un domaine = un microservice) ;
+- `diagramme-classes-par-domaine.png` : classes par domaine (un domaine = un microservice) ;
 - `sequence-signalement.png` : parcours d'un signalement, avec le cas de panne ;
 - `classes-<service>.png` : diagramme de classes de chaque microservice.
 
 ## Structure du dépôt
 
 ```
-ecosignal-SSA1/
+ecosignal-4SSA1/
 ├── Backend/
 │   ├── eureka/
 │   ├── gateway/
@@ -77,14 +79,47 @@ ecosignal-SSA1/
 
 ## Lancement
 
-Cette section sera complétée au fil des séances (Gateway et Eureka en S5, Docker Compose en S9).
+État actuel (Validation 1) : le projet de chaque microservice est créé dans `Backend/microservices/`, compile et démarre individuellement avec un endpoint de test. La logique métier, la Gateway, Eureka et le Config Server arrivent à partir de la séance 5, Docker Compose en séance 9.
 
-État actuel (Validation 1) : les projets de chaque microservice sont créés dans `Backend/microservices/` et démarrent individuellement. Pour lancer un service Spring Boot :
+Prérequis : JDK 17 (Maven est fourni par le wrapper `mvnw`), Python 3.11 ou plus pour analytics-service.
+
+| Service | Port | Endpoint de test |
+| --- | --- | --- |
+| user-service | 8081 | `GET /hello` |
+| report-service | 8082 | `GET /hello` |
+| media-service | 8083 | `GET /api/media/hello` |
+| geo-service | 8084 | `GET /hello` |
+| case-service | 8085 | `GET /hello` |
+| notification-service | 8086 | `GET /hello` |
+| analytics-service | 8087 | `GET /hello` |
+
+Lancer un service Spring Boot :
 
 ```
 cd Backend/microservices/<nom-du-service>
 ./mvnw spring-boot:run
 ```
+
+Sous Windows : `mvnw.cmd spring-boot:run`. media-service embarque déjà le client Eureka : tant que le serveur Eureka n'est pas en place (S5), il démarre normalement mais affiche des avertissements de connexion au port 8761.
+
+Lancer analytics-service (Python / FastAPI) :
+
+```
+cd Backend/microservices/analytics-service
+python -m venv .venv
+.venv\Scripts\activate          # Linux / macOS : source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --port 8087
+```
+
+Page de test du front-end (appelle l'endpoint de test des sept services) :
+
+```
+cd Frontend
+python -m http.server 5500
+```
+
+puis ouvrir `http://localhost:5500`.
 
 Prévu pour la version finale :
 
@@ -98,7 +133,9 @@ docker compose up --build
 
 ## Documentation
 
-Le dossier technique (sujet, acteurs, découpage, données, interactions, architecture, contrats d'API, planning) et la présentation sont dans `Documentation/`.
+- Dossier technique (sujet, acteurs, découpage, données, interactions, architecture, contrats d'API, planning) : `Documentation/EcoSignal-Dossier-technique-Validation-1.docx`
+- Présentation : `Documentation/Presentation/EcoSignal-Presentation.pdf`
+- Diagrammes : `Documentation/Diagrams/`
 
 ## Organisation Git
 
